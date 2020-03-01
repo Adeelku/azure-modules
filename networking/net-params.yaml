@@ -1,0 +1,6 @@
+LOCATION: canadacentral 
+NET_RG_NAME:  net-poc-rg
+VMET_NAME: vnet-poc
+SNET_NAME: subnet-poc
+VNET_CIDR: 10.10.0.0/16
+SNET_CIDR: 10.10.0.0/24
