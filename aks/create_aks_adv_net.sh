@@ -9,6 +9,7 @@ NODE_SIZE=$(cat ./aks-params.yaml| grep NODE_SIZE | awk '{print $2}')
 NODE_COUNT=$(cat ./aks-params.yaml| grep NODE_COUNT | awk '{print $2}')
 NODE_DISK_SIZE=$(cat ./aks-params.yaml| grep NODE_DISK_SIZE | awk '{print $2}')
 VERSION=$(cat ./aks-params.yaml| grep VERSION | awk '{print $2}')
+CNI_PLUGIN=$(cat ./aks-params.yaml| grep CNI_PLUGIN | awk '{print $2}')
 
 ## network params
 NET_RG_NAME=$(cat ../networking/net-params.yaml| grep NET_RG_NAME | awk '{print $2}')
@@ -42,7 +43,7 @@ az aks create --resource-group $RG_NAME --name $CLUSTER_NAME \
   --load-balancer-sku standard \
   --api-server-authorized-ip-ranges "${AUTH_IP}/32" \
   --node-count $NODE_COUNT --node-osdisk-size $NODE_DISK_SIZE \
-  --network-plugin azure \
+  --network-plugin $CNI_PLUGIN \
   --vnet-subnet-id $SNET_ID \
   --docker-bridge-address 172.17.0.1/16 \
   --dns-service-ip 10.2.0.10 \
